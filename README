@@ -1,2 +1,7 @@
-Android Client for https://github.com/appsandwich/galwaybus
+Android Client that shows Galway Bus Info (retrieved from https://github.com/appsandwich/galwaybus)
+
+You will need to add your own Google Maps API Key in AndroidManifest.xml
+
+
+
 

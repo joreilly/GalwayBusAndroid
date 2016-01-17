@@ -9,21 +9,13 @@ import java.util.Map;
 import retrofit.Callback;
 import retrofit.http.GET;
 import retrofit.http.Path;
+import rx.Observable;
 
 public interface GalwayBusRestInterface {
 
     @GET("/routes.json")
-    Map<String,BusRoute> getRoutes();
+    Observable<Map<String, BusRoute>> getRoutes();
 
-    @GET("/routes/{route_id}.json")
-    GetStopsResponse getStops(@Path("route_id") int routeId);
-
-    @GET("/stops/{stop_ref}.json")
-    GetDeparturesResponse getDepartures(@Path("stop_ref") String stopRef);
-
-
-    @GET("/routes.json")
-    void getRoutes(Callback<Map<String, BusRoute>> cb);
 
     @GET("/routes/{route_id}.json")
     void getStops(@Path("route_id") int routeId, Callback<GetStopsResponse> cb);

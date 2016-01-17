@@ -21,6 +21,8 @@ import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class RoutesFragment extends BaseFragment {
 
@@ -64,7 +66,13 @@ public class RoutesFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        galwayBusService.getRoutes();
+        galwayBusService.getRoutes()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(busRoutes -> {
+                    busRoutesAdapter.setBusRoutes(new ArrayList<>(busRoutes.values()));
+                    busRoutesAdapter.notifyDataSetChanged();
+                });
     }
 
 

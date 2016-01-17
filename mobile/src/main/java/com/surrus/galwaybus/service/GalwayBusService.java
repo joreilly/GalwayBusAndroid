@@ -20,6 +20,7 @@ import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import rx.Observable;
 
 @Singleton
 public class GalwayBusService {
@@ -38,25 +39,9 @@ public class GalwayBusService {
     }
 
 
-
-    public void getRoutes() {
-
-        galwayBusResetInterface.getRoutes(
-                new Callback<Map<String,BusRoute>>() {
-                    @Override
-                    public void success(Map<String, BusRoute> busRoutes, Response response) {
-                        Log.d("GalwayBusService", "got bus routes");
-                        bus.post(new RoutesLoadedEvent(new ArrayList<BusRoute>(busRoutes.values())));
-                    }
-
-                    @Override
-                    public void failure(RetrofitError error) {
-                        Log.e("GalwayBusService", error.getMessage());
-                    }
-                }
-        );
+    public Observable<Map<String, BusRoute>> getRoutes() {
+        return galwayBusResetInterface.getRoutes();
     }
-
 
     public void getStops(int routeId) {
 
