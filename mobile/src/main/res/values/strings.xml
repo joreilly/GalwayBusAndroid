@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">GalwayBus</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="title_activity_stops">StopsActivity</string>
+    <string name="stops_direction1">Direction 1</string>
+    <string name="stops_direction2">Direction 2</string>
+
+    <string name="title_activity_stops_map">StopsMapActivity</string>
+
+</resources>
