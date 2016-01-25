@@ -16,12 +16,14 @@ import com.surrus.galwaybus.service.GalwayBusService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 public class RoutesFragment extends BaseFragment {
@@ -69,9 +71,13 @@ public class RoutesFragment extends BaseFragment {
         galwayBusService.getRoutes()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(busRoutes -> {
-                    busRoutesAdapter.setBusRoutes(new ArrayList<>(busRoutes.values()));
-                    busRoutesAdapter.notifyDataSetChanged();
+                .subscribe(new Action1<Map<String, BusRoute>>() {
+                    @Override
+                    public void call(Map<String, BusRoute> stringBusRouteMap) {
+                        busRoutesAdapter.setBusRoutes(new ArrayList<>(stringBusRouteMap.values()));
+                        busRoutesAdapter.notifyDataSetChanged();
+
+                    }
                 });
     }
 
