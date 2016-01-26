@@ -3,13 +3,11 @@ package com.surrus.galwaybus.service;
 import android.util.Log;
 
 import com.surrus.galwaybus.events.DeparturesLoadedEvent;
-import com.surrus.galwaybus.events.RoutesLoadedEvent;
 import com.surrus.galwaybus.events.StopsLoadedEvent;
 import com.surrus.galwaybus.model.BusRoute;
 import com.surrus.galwaybus.model.GetDeparturesResponse;
 import com.surrus.galwaybus.model.GetStopsResponse;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -44,11 +42,12 @@ public class GalwayBusService {
     }
 
     public void getStops(int routeId) {
-
+Log.e("inaki","1111");
         galwayBusResetInterface.getStops(routeId,
                 new Callback<GetStopsResponse>() {
                     @Override
                     public void success(GetStopsResponse getStopsResponse, Response response) {
+                        Log.e("inaki","2222"+response.toString());
                         Log.d("GalwayBusService", "got stops");
                         bus.post(new StopsLoadedEvent(getStopsResponse.getStops()));
                     }
