@@ -1,4 +1,4 @@
-package com.surrus.galwaybus.ui;
+package com.surrus.galwaybus;
 
 import android.view.View;
 

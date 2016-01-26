@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.Espresso.pressBack;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -41,7 +42,7 @@ public class MainActivityTest {
     @Test
     public void testClickOneRouteDisplayResults() {
         onView(withId(R.id.drawer_layout)).perform(DrawerActions.open());
-        onView(withText("Routes")).perform(click());
+        pressBack();
         onView(withId(R.id.list)).perform(RecyclerViewActions.actionOnItemAtPosition(2, click()));
     }
 
