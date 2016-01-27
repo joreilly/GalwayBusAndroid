@@ -3,13 +3,11 @@ package com.surrus.galwaybus.service;
 import android.util.Log;
 
 import com.surrus.galwaybus.events.DeparturesLoadedEvent;
-import com.surrus.galwaybus.events.RoutesLoadedEvent;
 import com.surrus.galwaybus.events.StopsLoadedEvent;
 import com.surrus.galwaybus.model.BusRoute;
 import com.surrus.galwaybus.model.GetDeparturesResponse;
 import com.surrus.galwaybus.model.GetStopsResponse;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 import javax.inject.Inject;
